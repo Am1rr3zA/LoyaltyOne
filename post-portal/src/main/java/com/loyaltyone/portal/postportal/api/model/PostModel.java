@@ -1,17 +1,28 @@
 package com.loyaltyone.portal.postportal.api.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 /**
  * @author Amirreza Soudi
  * @since 2017-12-06.
  */
-public class Post {
+@JsonInclude(JsonInclude.Include.NON_NULL) // do not serialize null fields (omit them)
+@JsonPropertyOrder({"name"})
+public class PostModel {
     private String name;
 
-    public Post(String name) {
-        this.name = name;
+    public PostModel() {
+        name = "Nothing Here";
     }
 
-    public Post() {
+    @JsonCreator
+    public PostModel(@JsonProperty("name") String name) {
+
+        this.name = name;
+
 
     }
 
@@ -24,7 +35,7 @@ public class Post {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Post post = (Post) o;
+        PostModel post = (PostModel) o;
 
         return name != null ? name.equals(post.name) : post.name == null;
     }

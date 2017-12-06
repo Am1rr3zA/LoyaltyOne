@@ -1,7 +1,7 @@
 package com.loyaltyone.portal.postportal.api.controller;
 
 import com.loyaltyone.portal.postportal.api.config.Routes;
-import com.loyaltyone.portal.postportal.api.model.Post;
+import com.loyaltyone.portal.postportal.api.model.PostModel;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +20,7 @@ public class PostController {
     }
 
     @RequestMapping(value = Routes.API_V1_GET_TEXT, method = RequestMethod.POST)
-    public String returnJsonBodyText(@RequestBody Post post) {
+    public String returnJsonBodyText(@RequestBody PostModel post) {
         return post.toString();
     }
 }

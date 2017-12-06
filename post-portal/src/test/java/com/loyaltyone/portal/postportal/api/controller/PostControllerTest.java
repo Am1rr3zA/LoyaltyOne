@@ -27,10 +27,19 @@ public class PostControllerTest {
 
 
     @Test
-    public void returnInputText() throws Exception {
+    public void returnDefaultInputText() throws Exception {
         this.mockMvc.perform(get(Routes.API_V1_GET_TEXT))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Nothing Here"))
+                .andDo(print());
+    }
+
+    @Test
+    public void returnParameterInputText() throws Exception {
+        this.mockMvc.perform(get(Routes.API_V1_GET_TEXT)
+                .param("name", "John"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("John"))
                 .andDo(print());
     }
 
