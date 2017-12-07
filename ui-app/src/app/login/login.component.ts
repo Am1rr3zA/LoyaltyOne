@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   public showPostRequest(text: string) {
-    this.resource.getText(text).subscribe((res: PostModel) => {
+    this.resource.postText(text).subscribe((res: PostModel) => {
       this.postPost = res;
       console.log(res);
     });

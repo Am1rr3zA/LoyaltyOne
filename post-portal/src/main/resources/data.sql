@@ -1,0 +1,1 @@
+INSERT INTO POST VALUES(1, 'First POst', {ts '2017-12-07 18:47:52.69'});
