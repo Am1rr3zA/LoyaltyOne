@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginResource } from './resource';
+import { PostModel } from '../model/postModel';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'login',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  private postGet: PostModel = new PostModel('');
+  private postPost: PostModel = new PostModel('');
+
+  constructor(private resource: LoginResource, private http: HttpClient) { }
 
   ngOnInit() {
+
+  }
+
+  public showGetRequest(text: string) {
+    this.resource.getText(text).subscribe((res: PostModel) => {
+      this.postGet = res;
+      console.log(res);
+    });
+  }
+
+  public showPostRequest(text: string) {
+    this.resource.getText(text).subscribe((res: PostModel) => {
+      this.postPost = res;
+      console.log(res);
+    });
   }
 
 }

@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PostController {
     @RequestMapping(value = Routes.API_V1_GET_TEXT, method = RequestMethod.GET)
-    public String returnInputText(@RequestParam(value="name", defaultValue="Nothing Here") String input) {
-        return input;
+    public PostModel returnInputText(@RequestParam(value="name", defaultValue="Nothing Here") String input) {
+        return new PostModel(input);
     }
 
     @RequestMapping(value = Routes.API_V1_GET_TEXT, method = RequestMethod.POST)
-    public String returnJsonBodyText(@RequestBody PostModel post) {
-        return post.toString();
+    public PostModel returnJsonBodyText(@RequestBody PostModel post) {
+        return post;
     }
 }

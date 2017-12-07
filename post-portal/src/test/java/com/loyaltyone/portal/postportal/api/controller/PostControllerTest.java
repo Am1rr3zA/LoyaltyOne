@@ -30,7 +30,7 @@ public class PostControllerTest {
     public void returnDefaultInputText() throws Exception {
         this.mockMvc.perform(get(Routes.API_V1_GET_TEXT))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Nothing Here"))
+                .andExpect(content().json("{\"name\":\"Nothing Here\"}"))
                 .andDo(print());
     }
 
@@ -39,7 +39,7 @@ public class PostControllerTest {
         this.mockMvc.perform(get(Routes.API_V1_GET_TEXT)
                 .param("name", "John"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("John"))
+                .andExpect(content().json("{\"name\":\"John\"}"))
                 .andDo(print());
     }
 
