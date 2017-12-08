@@ -1,7 +1,7 @@
 export class PostModel {
-   name: string;
+   text: string;
 
-   constructor(name: string) {
-       this.name = name;
+   constructor(text: string) {
+       this.text = text;
     }
 }

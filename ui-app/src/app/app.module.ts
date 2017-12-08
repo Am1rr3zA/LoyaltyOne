@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginResource } from './login/resource';
+import { LoyaltyOneComponent } from './loyalty-one/loyalty-one.component';
+import { PostsListComponent } from './posts-list/posts-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    LoyaltyOneComponent,
+    PostsListComponent
   ],
   imports: [
     BrowserModule,
