@@ -11,6 +11,7 @@ import { store } from '../loyalty-one/app-data';
 export class PostsListComponent implements Observer<PostModel[]>, OnInit {
 
   posts: PostModel[] = [];
+  public obj: any = this;
 
   ngOnInit() {
     store.postsList$.subscribe(this);
@@ -18,7 +19,7 @@ export class PostsListComponent implements Observer<PostModel[]>, OnInit {
 
   next(data: PostModel[]) {
     console.log('Posts list component rceived data ...');
-    this.posts = data;
+    this.obj.posts = data;
   }
 
   error (err: any) {
