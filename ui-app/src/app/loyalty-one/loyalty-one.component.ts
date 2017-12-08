@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { store } from './app-data';
+import { PostResource } from '../resource/resource';
+import { PostModel } from '../model/postModel';
 
 @Component({
   selector: 'loyalty-one',
@@ -8,19 +10,16 @@ import { store } from './app-data';
 })
 export class LoyaltyOneComponent implements OnInit {
 
-  constructor() { }
+  constructor(private resource: PostResource) { }
 
   ngOnInit() {
 
   }
 
   addPost(postText: string) {
-    const newPost = {
-        // id: Math.random(),
-        text: postText
-    };
-
-    store.addPost(newPost);
+    this.resource.postText(postText).subscribe((res: PostModel) => {
+      store.addPost(res);
+    });
   }
 
 }

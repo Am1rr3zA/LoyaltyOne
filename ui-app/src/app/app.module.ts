@@ -5,9 +5,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginResource } from './login/resource';
 import { LoyaltyOneComponent } from './loyalty-one/loyalty-one.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
+import { PostResource } from './resource/resource';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { PostsListComponent } from './posts-list/posts-list.component';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [LoginResource],
+  providers: [PostResource],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
