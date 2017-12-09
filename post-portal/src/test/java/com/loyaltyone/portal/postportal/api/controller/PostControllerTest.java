@@ -2,6 +2,7 @@ package com.loyaltyone.portal.postportal.api.controller;
 
 import com.loyaltyone.portal.postportal.api.config.Routes;
 import com.loyaltyone.portal.postportal.api.service.PostService;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,31 +31,24 @@ public class PostControllerTest {
     @MockBean
     private PostService postService;
 
-    @Test
-    public void returnDefaultInputText() throws Exception {
-        this.mockMvc.perform(get(Routes.API_GET_POST))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{\"name\":\"Nothing Here\"}"))
-                .andDo(print());
-    }
-
-    @Test
-    public void returnParameterInputText() throws Exception {
-        this.mockMvc.perform(get(Routes.API_GET_POST)
-                .param("name", "John"))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{\"name\":\"John\"}"))
-                .andDo(print());
-    }
 
     @Test
     public void returnJsonBodyText() throws Exception {
 
         mockMvc.perform(post(Routes.API_GET_POST)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\":\"Amirreza\"}"))
+                .content("{\"text\": \"ddd\", \"user_id\": \"1\"}"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(org.hamcrest.Matchers.containsString("Amirreza")));
+                .andExpect(content().string(Matchers.containsString("{\"text\":\"ddd\",\"user_id\":1}")));
     }
+
+    @Test
+    public void returnEmptyListForUser() throws Exception {
+        this.mockMvc.perform(get(Routes.API_GET_ALL_POSTS_BY_USER)
+                .param("id", "1"))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
 
 }

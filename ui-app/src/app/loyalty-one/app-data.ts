@@ -20,6 +20,11 @@ class DataStore {
         this.postListSubject.next(posts);
     }
 
+    clearList() {
+        const emptyPosts: PostModel[] = [];
+        this.postListSubject.next(_.cloneDeep(emptyPosts));
+    }
+
     private clonePosts() {
         return _.cloneDeep(this.postListSubject.getValue());
     }

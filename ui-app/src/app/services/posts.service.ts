@@ -18,8 +18,13 @@ export class PostsService {
     return this.http.get<PostModel>(`${this.baseUrl}`, { params: params });
   }
 
-  postText(text: string): Observable<PostModel> {
-    const body: PostModel = new PostModel(text);
+  getAllPostByUser(user_id: string): Observable<PostModel[]> {
+    const params = new HttpParams().set('id', user_id);
+    return this.http.get<PostModel[]>(`${this.baseUrl}`, { params: params });
+  }
+
+  postText(text: string, user_id: number): Observable<PostModel> {
+    const body: PostModel = new PostModel(text, user_id);
     return this.http.post<PostModel>(`${this.baseUrl}`, body);
   }
 

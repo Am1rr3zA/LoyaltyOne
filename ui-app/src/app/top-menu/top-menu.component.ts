@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService, UNKNOWN_USER } from '../services/user.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { store } from '../loyalty-one/app-data';
 
 @Component({
   selector: 'top-menu',
@@ -21,6 +22,7 @@ export class TopMenuComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigateByUrl('/login');
+    store.clearList();
   }
 
 }

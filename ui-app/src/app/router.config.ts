@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 
 export const routerConfig: Routes = [
     {
-        path: 'home',
+        path: 'home/:id',
         component: LoyaltyOneComponent
     },
     {

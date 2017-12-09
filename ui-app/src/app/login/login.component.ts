@@ -20,7 +20,11 @@ export class LoginComponent implements OnInit {
 
   login(username: string, password: string) {
     this.userService.login(username, password).subscribe(
-      () => this.router.navigateByUrl('/home'),
+      (user) => {
+        console.log('Hello');
+        console.log(user);
+        this.router.navigateByUrl('/home/' + user.id);
+      } ,
       console.error
     );
   }

@@ -11,6 +11,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -27,9 +29,10 @@ public class PostRepositoryTest {
 
     @Test
     public void InserNewPost() {
-        PostModel pm = new PostModel( "Test Post");
+        PostModel pm = new PostModel( "Test Post", 1);
         postRepository.insertNewPost(pm);
         PostModel dbPost =  postRepository.getPostByText("Test Post");
+//        List<PostModel> aa = postRepository.getAllPostsOfUser(1);
         assertEquals(pm.getText(), dbPost.getText());
     }
 
