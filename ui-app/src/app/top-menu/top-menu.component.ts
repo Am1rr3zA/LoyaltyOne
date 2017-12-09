@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService, UNKNOWN_USER } from '../services/user.service';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'top-menu',
@@ -11,14 +12,15 @@ export class TopMenuComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.isLoggedIn$ = this.userService.user$.map(user => user !== UNKNOWN_USER);
   }
 
   logout() {
-
+    this.userService.logout();
+    this.router.navigateByUrl('/login');
   }
 
 }

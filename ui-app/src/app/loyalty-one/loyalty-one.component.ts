@@ -16,10 +16,13 @@ export class LoyaltyOneComponent implements OnInit {
 
   }
 
-  addPost(postText: string) {
-    this.postsService.postText(postText).subscribe((res: PostModel) => {
-      store.addPost(res);
-    });
+  addPost(postText: HTMLInputElement) {
+    if (postText.value !== null && postText.value !== ' '  && postText.value !== '') {
+      this.postsService.postText(postText.value).subscribe((res: PostModel) => {
+        store.addPost(res);
+        postText.value = '';
+      });
+    }
   }
 
 }

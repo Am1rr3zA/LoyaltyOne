@@ -15,7 +15,7 @@ export const routerConfig: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'home'
+        redirectTo: 'login'
     },
     {
         path: '**',

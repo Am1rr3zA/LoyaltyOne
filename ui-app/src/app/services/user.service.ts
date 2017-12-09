@@ -27,4 +27,8 @@ export class UserService {
     .do(user => this.subject.next(user));
   }
 
+  logout() {
+    this.subject.next(UNKNOWN_USER);
+  }
+
 }
