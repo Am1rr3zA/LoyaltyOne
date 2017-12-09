@@ -9,7 +9,7 @@ import { PostModel } from '../model/postModel';
 @Injectable()
 export class PostsService {
 
-  private baseUrl = '/api/text';
+  private baseUrl = '/api/post';
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,6 @@ export class PostsService {
   }
 
   postText(text: string): Observable<PostModel> {
-    const params = new HttpParams().set('name', text);
     const body: PostModel = new PostModel(text);
     return this.http.post<PostModel>(`${this.baseUrl}`, body);
   }

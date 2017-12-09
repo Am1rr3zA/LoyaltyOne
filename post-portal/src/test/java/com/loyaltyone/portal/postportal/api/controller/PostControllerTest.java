@@ -32,7 +32,7 @@ public class PostControllerTest {
 
     @Test
     public void returnDefaultInputText() throws Exception {
-        this.mockMvc.perform(get(Routes.API_V1_GET_TEXT))
+        this.mockMvc.perform(get(Routes.API_GET_POST))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"name\":\"Nothing Here\"}"))
                 .andDo(print());
@@ -40,7 +40,7 @@ public class PostControllerTest {
 
     @Test
     public void returnParameterInputText() throws Exception {
-        this.mockMvc.perform(get(Routes.API_V1_GET_TEXT)
+        this.mockMvc.perform(get(Routes.API_GET_POST)
                 .param("name", "John"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"name\":\"John\"}"))
@@ -50,7 +50,7 @@ public class PostControllerTest {
     @Test
     public void returnJsonBodyText() throws Exception {
 
-        mockMvc.perform(post(Routes.API_V1_GET_TEXT)
+        mockMvc.perform(post(Routes.API_GET_POST)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\":\"Amirreza\"}"))
                 .andExpect(status().isOk())

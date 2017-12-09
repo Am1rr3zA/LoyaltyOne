@@ -6,5 +6,6 @@ package com.loyaltyone.portal.postportal.api.config;
  */
 public class Routes {
     public static final String API_V1_PATH_WILDCARD = "/api/**";
-    public static final String API_V1_GET_TEXT = "/api/text";
+    public static final String API_GET_POST = "/api/post";
+    public static final String API_GET_USER = "/api/login";
 }

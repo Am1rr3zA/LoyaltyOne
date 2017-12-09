@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoyaltyOneComponent } from './loyalty-one/loyalty-one.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { PostsService } from './services/posts.service';
+import { TopMenuComponent } from './top-menu/top-menu.component';
+import { RouterModule } from '@angular/router';
+import { routerConfig } from './router.config';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -15,13 +19,15 @@ import { PostsService } from './services/posts.service';
     AppComponent,
     LoginComponent,
     LoyaltyOneComponent,
-    PostsListComponent
+    PostsListComponent,
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routerConfig)
   ],
-  providers: [PostsService],
+  providers: [PostsService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,23 +1,14 @@
-<div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <input id="input" #inputGet>
-            <button class="button button-highlight" (click)=showGetRequest(inputGet.value)>Done (Get)</button>            
-      </div>
-      <div class="col-md-6" >
-        <input id="input" #inputPost>
-            <button class="button button-highlight  width: 80%" (click)=showPostRequest(inputPost.value)>Done (Post)</button>
-      </div>
-      <div class="row">
-        <div class="text-container col-md-6">
-            <span>{{ postGet.name }}</span>
-        </div>
-        <div class="text-container col-md-6">
-            <span>{{ postPost.name }}</span>
-        </div>
-      </div>
+<div class="screen-container login-screen">
+    <h2>Login</h2>
+
+    <div>
+        <input #username type="text" name="username" placeholder="Username">
     </div>
+    <div>
+        <input #password type="password" name="password" placeholder="Password">
+    </div>
+
+    <input type="submit" value="Login"
+           class="button button-primary" (click)="login(username.value, password.value)">
+
 </div>
-
-
-

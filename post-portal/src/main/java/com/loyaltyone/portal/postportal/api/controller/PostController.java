@@ -20,12 +20,12 @@ public class PostController {
     @Autowired
     PostService postService;
 
-    @RequestMapping(value = Routes.API_V1_GET_TEXT, method = RequestMethod.GET)
+    @RequestMapping(value = Routes.API_GET_POST, method = RequestMethod.GET)
     public PostModel returnInputText(@RequestParam(value="name", defaultValue="Nothing Here") String input) {
         return new PostModel(input);
     }
 
-    @RequestMapping(value = Routes.API_V1_GET_TEXT, method = RequestMethod.POST)
+    @RequestMapping(value = Routes.API_GET_POST, method = RequestMethod.POST)
     public PostModel returnJsonBodyText(@RequestBody PostModel post) {
         postService.addNewPost(post);
         return post;
