@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostModel } from '../model/postModel';
 import { HttpClient } from '@angular/common/http';
-import { PostResource } from '../resource/resource';
+import { PostsService } from '../services/posts.service';
 
 @Component({
   selector: 'login',
@@ -13,21 +13,21 @@ export class LoginComponent implements OnInit {
   private postGet: PostModel = new PostModel('');
   private postPost: PostModel = new PostModel('');
 
-  constructor(private resource: PostResource, private http: HttpClient) { }
+  constructor(private postsService: PostsService, private http: HttpClient) { }
 
   ngOnInit() {
 
   }
 
   public showGetRequest(text: string) {
-    this.resource.getText(text).subscribe((res: PostModel) => {
+    this.postsService.getText(text).subscribe((res: PostModel) => {
       this.postGet = res;
       console.log(res);
     });
   }
 
   public showPostRequest(text: string) {
-    this.resource.postText(text).subscribe((res: PostModel) => {
+    this.postsService.postText(text).subscribe((res: PostModel) => {
       this.postPost = res;
       console.log(res);
     });

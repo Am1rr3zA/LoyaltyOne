@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoyaltyOneComponent } from './loyalty-one/loyalty-one.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
-import { PostResource } from './resource/resource';
+import { PostsService } from './services/posts.service';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { PostResource } from './resource/resource';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [PostResource],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

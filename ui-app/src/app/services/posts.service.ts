@@ -7,7 +7,7 @@ import { PostModel } from '../model/postModel';
 
 
 @Injectable()
-export class PostResource {
+export class PostsService {
 
   private baseUrl = '/api/text';
 
