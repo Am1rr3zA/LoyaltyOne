@@ -5,6 +5,7 @@ import { store } from '../loyalty-one/app-data';
 import { User } from '../model/user';
 import { UserService } from '../services/user.service';
 import { PostsService } from '../services/posts.service';
+import { CommentService } from '../services/comment.service';
 
 @Component({
   selector: 'posts-list',
@@ -38,7 +39,12 @@ export class PostsListComponent implements Observer<PostModel[]>, OnInit {
     console.log('completed');
   }
 
-  constructor(private postsService: PostsService, private userSerivce: UserService) { }
+  addcomment(id: string) {
+    this.commentService.setId(id);
+  }
+
+  constructor(private postsService: PostsService, private userSerivce: UserService,
+    private commentService: CommentService) { }
 
 
 

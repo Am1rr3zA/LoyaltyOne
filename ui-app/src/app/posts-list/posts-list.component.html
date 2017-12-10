@@ -16,6 +16,9 @@
             <td>
                 {{ post.city.temperature }}
             </td>
+            <td>
+                <button (click)="addcomment(post.id)">C</button>
+            </td>
         </tr>
         </tbody>
 </table>

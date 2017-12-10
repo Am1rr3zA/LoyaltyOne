@@ -7,6 +7,7 @@ CREATE TABLE USER( id BIGINT NOT NULL PRIMARY KEY,
 
 DROP TABLE IF EXISTS POST;
 CREATE TABLE POST( id VARCHAR(255),
+                   parent_id VARCHAR(255),
                    text VARCHAR(255) NOT NULL,
                    creation_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                    user_id BIGINT,

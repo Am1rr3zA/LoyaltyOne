@@ -12,6 +12,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { RouterModule } from '@angular/router';
 import { routerConfig } from './router.config';
 import { UserService } from './services/user.service';
+import { CommentService } from './services/comment.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { UserService } from './services/user.service';
     HttpClientModule,
     RouterModule.forRoot(routerConfig)
   ],
-  providers: [PostsService, UserService],
+  providers: [PostsService, UserService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

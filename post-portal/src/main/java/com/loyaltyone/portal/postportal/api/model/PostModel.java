@@ -6,21 +6,27 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.util.List;
+
 /**
  * @author Amirreza Soudi
  * @since 2017-12-06.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL) // do not serialize null fields (omit them)
-@JsonPropertyOrder({"id, text, user_id, city"})
+@JsonPropertyOrder({"id, parent_id, text, user_id, city, comments"})
 public class PostModel {
 
     private String id;
+
+    private String parent_id;
 
     private String text;
 
     private Long user_id;
 
     private CityModel city;
+
+    private List<PostModel> comments;
 
     public PostModel() {
         text = "Nothing Here";
@@ -36,13 +42,25 @@ public class PostModel {
 
     @JsonCreator
     public PostModel(@JsonProperty("id") String id,
+                     @JsonProperty("parent_id") String parent_id,
                      @JsonProperty("text") String name,
                      @JsonProperty("user_id") long user_id,
-                     @JsonProperty("city") CityModel city) {
+                     @JsonProperty("city") CityModel city,
+                     @JsonProperty("comments") List<PostModel> comments) {
         this.id = id;
+        this.parent_id = parent_id;
         this.text = name;
         this.user_id = user_id;
         this.city = city;
+        this.comments = comments;
+    }
+
+    public String getParent_id() {
+        return parent_id;
+    }
+
+    public void setParent_id(String parent_id) {
+        this.parent_id = parent_id;
     }
 
     public String getText() {
@@ -69,6 +87,14 @@ public class PostModel {
         this.city = city;
     }
 
+    public List<PostModel> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<PostModel> comments) {
+        this.comments = comments;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,17 +103,21 @@ public class PostModel {
         PostModel postModel = (PostModel) o;
 
         if (id != null ? !id.equals(postModel.id) : postModel.id != null) return false;
+        if (parent_id != null ? !parent_id.equals(postModel.parent_id) : postModel.parent_id != null) return false;
         if (text != null ? !text.equals(postModel.text) : postModel.text != null) return false;
         if (user_id != null ? !user_id.equals(postModel.user_id) : postModel.user_id != null) return false;
-        return city != null ? city.equals(postModel.city) : postModel.city == null;
+        if (city != null ? !city.equals(postModel.city) : postModel.city != null) return false;
+        return comments != null ? comments.equals(postModel.comments) : postModel.comments == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (parent_id != null ? parent_id.hashCode() : 0);
         result = 31 * result + (text != null ? text.hashCode() : 0);
         result = 31 * result + (user_id != null ? user_id.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (comments != null ? comments.hashCode() : 0);
         return result;
     }
 
@@ -97,6 +127,7 @@ public class PostModel {
                 .append(text)
                 .append(user_id)
                 .append(city)
+                .append(comments)
                 .toString();
     }
 }

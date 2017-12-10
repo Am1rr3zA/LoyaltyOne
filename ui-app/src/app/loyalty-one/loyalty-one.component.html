@@ -2,11 +2,32 @@
     
         <h2> Post Manager </h2>
     
-        <input #input>
-        <input #city >
-        <input #latitude>
-        <input #longitude>
-        <input #temperature>
+        <div class="block">
+                <label>Post</label>
+                <input #input>
+        </div>
+
+        <div class="block">
+                <label>City</label>
+                <input #city   placeholder="city">
+        </div>
+
+        <div class="block">
+                <label>Latitude</label>
+                <input #latitude   placeholder="latitude">
+        </div>
+
+        <div class="block">
+                <label>Longitude</label>
+                <input #longitude   placeholder="longitude">
+        </div>
+
+        <div class="block">
+                <label>Temperature</label>
+                <input #temperature  placeholder="temperature">
+        </div>
+        <label>{{ commentService.get() }}</label>
+        
     
         <button class="button button-highlight"
                 (click)="addPost(input, city, latitude, longitude, temperature)" >Done</button>

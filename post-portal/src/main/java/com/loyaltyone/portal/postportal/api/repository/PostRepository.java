@@ -25,10 +25,10 @@ public class PostRepository {
     public int insertNewPost(PostModel post) {
 
         String sql = "INSERT INTO " + TABLENAME
-                + " (id, text, creation_ts, user_id, city, latitude, longitude, temperature)"
-                + " VALUES(?, ?, CURRENT_TIMESTAMP(), ?, ?, ?, ?, ?)";
+                + " (id, parent_id, text, creation_ts, user_id, city, latitude, longitude, temperature)"
+                + " VALUES(?, ?, ?, CURRENT_TIMESTAMP(), ?, ?, ?, ?, ?)";
 
-        return jdbcTemplate.update(sql, post.getId(), post.getText(), post.getUser_id(), post.getCity().getName(),
+        return jdbcTemplate.update(sql, post.getId(), post.getParent_id(), post.getText(), post.getUser_id(), post.getCity().getName(),
                 post.getCity().getLatitude(), post.getCity().getLongitude(), post.getCity().getTemperature());
     }
 

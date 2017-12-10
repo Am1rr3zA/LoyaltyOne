@@ -4,6 +4,15 @@ table {
     padding: 0 10px;
 }
 
-input{
+input {
     display:block;
+}
+
+label {
+    display: inline-block;
+}
+
+label {
+    width: 10em;
+    /* other CSS unchanged */
 }
