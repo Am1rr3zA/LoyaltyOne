@@ -30,7 +30,7 @@ public class PostRepositoryTest {
 
     @Test
     public void InserNewPost() {
-        PostModel pm = new PostModel( "absdcjgs", null,"Test Post", 1, new CityModel(), null);
+        PostModel pm = new PostModel( "absdcjgs",null, null,"Test Post", 1, new CityModel(), null);
         postRepository.insertNewPost(pm);
         PostModel dbPost =  postRepository.getPostByText("Test Post");
         assertEquals(pm.getText(), dbPost.getText());

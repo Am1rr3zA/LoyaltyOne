@@ -52,17 +52,18 @@ public class PostRepository {
 
     public class PostRowMapper implements RowMapper<PostModel> {
         public PostModel mapRow(ResultSet rs, int rowNum) throws SQLException {
-            PostModel customer = new PostModel();
+            PostModel post = new PostModel();
             CityModel city = new CityModel();
-            customer.setId(rs.getString("id"));
-            customer.setText(rs.getString("text"));
-            customer.setUser_id(rs.getLong("user_id"));
+            post.setId(rs.getString("id"));
+            post.setDate(rs.getTimestamp("creation_ts"));
+            post.setText(rs.getString("text"));
+            post.setUser_id(rs.getLong("user_id"));
             city.setName(rs.getString("city"));
             city.setLatitude(rs.getBigDecimal("latitude"));
             city.setLongitude(rs.getBigDecimal("longitude"));
             city.setTemperature(rs.getDouble("temperature"));
-            customer.setCity(city);
-            return customer;
+            post.setCity(city);
+            return post;
         }
 
     }

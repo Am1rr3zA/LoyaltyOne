@@ -2,6 +2,7 @@ import { City } from './city';
 
 export class PostModel {
    id: string;
+   date?: Date;
    parent_id: string;
    text: string;
    user_id: number;
