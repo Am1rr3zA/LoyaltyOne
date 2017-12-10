@@ -23,9 +23,9 @@ public class PostRepository {
 
     public int insertNewPost(PostModel post) {
 
-        String sql = "INSERT INTO " + TABLENAME + " (text, creation_ts, user_id) VALUES(?, CURRENT_TIMESTAMP(), ?)";
-        return jdbcTemplate.update(sql, post.getText(), post.getUser_id());
+        String sql = "INSERT INTO " + TABLENAME + " (id, text, creation_ts, user_id) VALUES(?, ?, CURRENT_TIMESTAMP(), ?)";
 
+        return jdbcTemplate.update(sql, post.getId(), post.getText(), post.getUser_id());
     }
 
     public PostModel getPostByText(String text) {
@@ -38,10 +38,18 @@ public class PostRepository {
         return jdbcTemplate.query(sql, new PostRowMapper(), new Object[]{user_id});
     }
 
+    public PostModel getPostById(String id) {
+        String sql = "SELECT * FROM " + TABLENAME + " where id = ?;";
+        List<PostModel> list = jdbcTemplate.query(sql, new PostRowMapper(), new Object[]{id});
+        if (list.size() > 0)
+            return list.get(0);
+        return null;
+    }
+
     public class PostRowMapper implements RowMapper<PostModel> {
         public PostModel mapRow(ResultSet rs, int rowNum) throws SQLException {
             PostModel customer = new PostModel();
-            customer.setId(rs.getLong("id"));
+            customer.setId(rs.getString("id"));
             customer.setText(rs.getString("text"));
             customer.setUser_id(rs.getLong("user_id"));
             return customer;

@@ -4,7 +4,7 @@ import com.loyaltyone.portal.postportal.api.config.Routes;
 import com.loyaltyone.portal.postportal.api.model.PostModel;
 import com.loyaltyone.portal.postportal.api.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +26,7 @@ public class PostController {
     @RequestMapping(value = Routes.API_GET_POST, method = RequestMethod.POST)
     public PostModel returnJsonBodyText(@RequestBody PostModel post) {
         postService.addNewPost(post);
-        return post;
+        return postService.getPostById(post.getId());
     }
 
     @RequestMapping(value = Routes.API_GET_ALL_POSTS_BY_USER, method = RequestMethod.GET)

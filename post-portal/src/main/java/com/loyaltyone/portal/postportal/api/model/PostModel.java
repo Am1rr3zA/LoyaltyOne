@@ -11,10 +11,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * @since 2017-12-06.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL) // do not serialize null fields (omit them)
-@JsonPropertyOrder({"text, user_id"})
+@JsonPropertyOrder({"id, text, user_id"})
 public class PostModel {
 
-    private Long id;
+    private String id;
 
     private String text;
 
@@ -24,7 +24,7 @@ public class PostModel {
         text = "Nothing Here";
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -33,12 +33,12 @@ public class PostModel {
     }
 
     @JsonCreator
-    public PostModel(@JsonProperty("text") String name,
+    public PostModel(@JsonProperty("id") String id,
+                     @JsonProperty("text") String name,
                      @JsonProperty("user_id") long user_id) {
-
+        this.id = id;
         this.text = name;
         this.user_id = user_id;
-
     }
 
     public String getText() {
@@ -53,8 +53,7 @@ public class PostModel {
         this.user_id = user_id;
     }
 
-    @JsonIgnore
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

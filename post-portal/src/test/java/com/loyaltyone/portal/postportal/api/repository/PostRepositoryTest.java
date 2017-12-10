@@ -29,7 +29,7 @@ public class PostRepositoryTest {
 
     @Test
     public void InserNewPost() {
-        PostModel pm = new PostModel( "Test Post", 1);
+        PostModel pm = new PostModel( "absdcjgs","Test Post", 1);
         postRepository.insertNewPost(pm);
         PostModel dbPost =  postRepository.getPostByText("Test Post");
 //        List<PostModel> aa = postRepository.getAllPostsOfUser(1);

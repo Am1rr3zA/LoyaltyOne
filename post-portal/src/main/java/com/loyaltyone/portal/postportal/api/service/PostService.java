@@ -23,4 +23,8 @@ public class PostService {
     public List<PostModel> getAllPostsOfUser(long user_id) {
         return postRepository.getAllPostsOfUser(user_id);
     }
+
+    public PostModel getPostById(String id) {
+        return postRepository.getPostById(id);
+    }
 }

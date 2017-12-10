@@ -21,9 +21,8 @@ export class PostsListComponent implements Observer<PostModel[]>, OnInit {
     store.postsList$.subscribe(this);
     this.userSerivce.user$.subscribe(user => this.obj.login_user = user);
     this.postsService.getAllPostByUser(this.login_user.id.toString()).subscribe(
-      res => this.obj.posts = res
+      res => store.initializePostsList(res)
     );
-    store.initializePostsList(this.obj.posts);
   }
 
   next(data: PostModel[]) {

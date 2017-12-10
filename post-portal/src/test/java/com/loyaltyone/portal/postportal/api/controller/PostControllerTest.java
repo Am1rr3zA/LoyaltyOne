@@ -37,9 +37,8 @@ public class PostControllerTest {
 
         mockMvc.perform(post(Routes.API_GET_POST)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"text\": \"ddd\", \"user_id\": \"1\"}"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(Matchers.containsString("{\"text\":\"ddd\",\"user_id\":1}")));
+                .content("{\"id\": \"abc\", \"text\": \"ddd\", \"user_id\": 1}"))
+                .andExpect(status().isOk());
     }
 
     @Test
