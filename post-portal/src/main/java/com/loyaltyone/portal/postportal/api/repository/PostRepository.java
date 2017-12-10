@@ -55,6 +55,7 @@ public class PostRepository {
             PostModel post = new PostModel();
             CityModel city = new CityModel();
             post.setId(rs.getString("id"));
+            post.setParent_id(rs.getString("parent_id"));
             post.setDate(rs.getTimestamp("creation_ts"));
             post.setText(rs.getString("text"));
             post.setUser_id(rs.getLong("user_id"));

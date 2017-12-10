@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Amirreza Soudi
@@ -21,7 +22,22 @@ public class PostService {
     }
 
     public List<PostModel> getAllPostsOfUser(long user_id) {
-        return postRepository.getAllPostsOfUser(user_id);
+        List<PostModel> listOfPosts = postRepository.getAllPostsOfUser(user_id);
+        List<PostModel> nestPostsList = listOfPosts.stream()
+                .filter(c -> c.getParent_id() == null)
+                .collect(Collectors.toList());
+
+
+
+        for (PostModel pm : nestPostsList) {
+            pm.setComments(listOfPosts.stream().filter(c -> pm.getId().equals(c.getParent_id())).collect(Collectors.toList()));
+            for (PostModel pm2 : pm.getComments()) {
+                pm2.setComments(listOfPosts.stream().filter(c -> pm2.getId().equals(c.getParent_id())).collect(Collectors.toList()));
+            }
+        }
+
+
+        return nestPostsList;
     }
 
     public PostModel getPostById(String id) {

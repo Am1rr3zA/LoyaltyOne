@@ -30,7 +30,7 @@ public class PostServiceTest {
     @Test
     public void getAllPostsOfUser() throws Exception {
         List<PostModel> list = postRepository.getAllPostsOfUser(1);
-        assertEquals(1, list.size());
+        assertEquals(5, list.size());
     }
 
 }
