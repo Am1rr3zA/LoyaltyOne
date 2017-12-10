@@ -4,6 +4,7 @@ import { PostModel } from '../model/postModel';
 import { PostsService } from '../services/posts.service';
 import { UserService } from '../services/user.service';
 import { User } from '../model/user';
+import { City } from '../model/city';
 
 @Component({
   selector: 'loyalty-one',
@@ -19,13 +20,24 @@ export class LoyaltyOneComponent implements OnInit {
 
   }
 
-  addPost(postText: HTMLInputElement) {
+  addPost(postText: HTMLInputElement, city: HTMLInputElement, latitude: HTMLInputElement,
+    longitude: HTMLInputElement, temperature: HTMLInputElement) {
     this.userSerivce.user$.subscribe(user => this.login_user = user);
 
     if (postText.value !== null && postText.value !== ' '  && postText.value !== '') {
-      this.postsService.postText(postText.value, this.login_user.id).subscribe((res: PostModel) => {
+      const cityObj: City = new City();
+      cityObj.name = city.value;
+      cityObj.latitude = +latitude.value;
+      cityObj.longitude = +longitude.value;
+      cityObj.temperature = +temperature.value;
+
+      this.postsService.postText(postText.value, this.login_user.id, cityObj).subscribe((res: PostModel) => {
         store.addPost(res);
         postText.value = '';
+        city.value = '';
+        latitude.value = '';
+        longitude.value = '';
+        temperature.value = '';
       });
     }
   }

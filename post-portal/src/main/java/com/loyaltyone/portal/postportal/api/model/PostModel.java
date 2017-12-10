@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * @since 2017-12-06.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL) // do not serialize null fields (omit them)
-@JsonPropertyOrder({"id, text, user_id"})
+@JsonPropertyOrder({"id, text, user_id, city"})
 public class PostModel {
 
     private String id;
@@ -19,6 +19,8 @@ public class PostModel {
     private String text;
 
     private Long user_id;
+
+    private CityModel city;
 
     public PostModel() {
         text = "Nothing Here";
@@ -35,10 +37,12 @@ public class PostModel {
     @JsonCreator
     public PostModel(@JsonProperty("id") String id,
                      @JsonProperty("text") String name,
-                     @JsonProperty("user_id") long user_id) {
+                     @JsonProperty("user_id") long user_id,
+                     @JsonProperty("city") CityModel city) {
         this.id = id;
         this.text = name;
         this.user_id = user_id;
+        this.city = city;
     }
 
     public String getText() {
@@ -57,6 +61,14 @@ public class PostModel {
         return id;
     }
 
+    public CityModel getCity() {
+        return city;
+    }
+
+    public void setCity(CityModel city) {
+        this.city = city;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,7 +78,8 @@ public class PostModel {
 
         if (id != null ? !id.equals(postModel.id) : postModel.id != null) return false;
         if (text != null ? !text.equals(postModel.text) : postModel.text != null) return false;
-        return user_id != null ? user_id.equals(postModel.user_id) : postModel.user_id == null;
+        if (user_id != null ? !user_id.equals(postModel.user_id) : postModel.user_id != null) return false;
+        return city != null ? city.equals(postModel.city) : postModel.city == null;
     }
 
     @Override
@@ -74,6 +87,7 @@ public class PostModel {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (text != null ? text.hashCode() : 0);
         result = 31 * result + (user_id != null ? user_id.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
         return result;
     }
 
@@ -82,6 +96,7 @@ public class PostModel {
         return new StringBuilder()
                 .append(text)
                 .append(user_id)
+                .append(city)
                 .toString();
     }
 }

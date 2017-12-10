@@ -10,4 +10,8 @@ CREATE TABLE POST( id VARCHAR(255),
                    text VARCHAR(255) NOT NULL,
                    creation_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                    user_id BIGINT,
+                   city VARCHAR(255),
+                   latitude DECIMAL(9,6),
+                   longitude DECIMAL(9,6),
+                   temperature DOUBLE,
                    foreign key (user_id) references USER(id));

@@ -3,11 +3,15 @@
         <h2> Post Manager </h2>
     
         <input #input>
+        <input #city >
+        <input #latitude>
+        <input #longitude>
+        <input #temperature>
     
         <button class="button button-highlight"
-                (click)="addPost(input)" >Done</button>
+                (click)="addPost(input, city, latitude, longitude, temperature)" >Done</button>
 
         <posts-list></posts-list>                
     
     
-    </div>
+</div>

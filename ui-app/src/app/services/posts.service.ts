@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { PostModel } from '../model/postModel';
+import { City } from '../model/city';
 
 
 @Injectable()
@@ -23,8 +24,9 @@ export class PostsService {
     return this.http.get<PostModel[]>(`${this.baseUrl}`, { params: params });
   }
 
-  postText(text: string, user_id: number): Observable<PostModel> {
+  postText(text: string, user_id: number, city: City): Observable<PostModel> {
     const body: PostModel = new PostModel(text, user_id);
+    body.city = city;
     return this.http.post<PostModel>(`${this.baseUrl}`, body);
   }
 

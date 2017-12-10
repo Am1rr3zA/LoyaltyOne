@@ -1,5 +1,6 @@
 package com.loyaltyone.portal.postportal.api.repository;
 
+import com.loyaltyone.portal.postportal.api.model.CityModel;
 import com.loyaltyone.portal.postportal.api.model.PostModel;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,10 +30,9 @@ public class PostRepositoryTest {
 
     @Test
     public void InserNewPost() {
-        PostModel pm = new PostModel( "absdcjgs","Test Post", 1);
+        PostModel pm = new PostModel( "absdcjgs","Test Post", 1, new CityModel());
         postRepository.insertNewPost(pm);
         PostModel dbPost =  postRepository.getPostByText("Test Post");
-//        List<PostModel> aa = postRepository.getAllPostsOfUser(1);
         assertEquals(pm.getText(), dbPost.getText());
     }
 

@@ -1,5 +1,6 @@
 package com.loyaltyone.portal.postportal.api.repository;
 
+import com.loyaltyone.portal.postportal.api.model.CityModel;
 import com.loyaltyone.portal.postportal.api.model.PostModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,9 +24,12 @@ public class PostRepository {
 
     public int insertNewPost(PostModel post) {
 
-        String sql = "INSERT INTO " + TABLENAME + " (id, text, creation_ts, user_id) VALUES(?, ?, CURRENT_TIMESTAMP(), ?)";
+        String sql = "INSERT INTO " + TABLENAME
+                + " (id, text, creation_ts, user_id, city, latitude, longitude, temperature)"
+                + " VALUES(?, ?, CURRENT_TIMESTAMP(), ?, ?, ?, ?, ?)";
 
-        return jdbcTemplate.update(sql, post.getId(), post.getText(), post.getUser_id());
+        return jdbcTemplate.update(sql, post.getId(), post.getText(), post.getUser_id(), post.getCity().getName(),
+                post.getCity().getLatitude(), post.getCity().getLongitude(), post.getCity().getTemperature());
     }
 
     public PostModel getPostByText(String text) {
@@ -49,9 +53,15 @@ public class PostRepository {
     public class PostRowMapper implements RowMapper<PostModel> {
         public PostModel mapRow(ResultSet rs, int rowNum) throws SQLException {
             PostModel customer = new PostModel();
+            CityModel city = new CityModel();
             customer.setId(rs.getString("id"));
             customer.setText(rs.getString("text"));
             customer.setUser_id(rs.getLong("user_id"));
+            city.setName(rs.getString("city"));
+            city.setLatitude(rs.getBigDecimal("latitude"));
+            city.setLongitude(rs.getBigDecimal("longitude"));
+            city.setTemperature(rs.getDouble("temperature"));
+            customer.setCity(city);
             return customer;
         }
 
