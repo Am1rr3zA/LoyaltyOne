@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,7 @@ public class PostModel {
 
     public PostModel() {
         text = "Nothing Here";
+        this.comments = new ArrayList<>();
     }
 
     public void setId(String id) {
@@ -58,6 +60,7 @@ public class PostModel {
         this.user_id = user_id;
         this.city = city;
         this.comments = comments;
+        this.comments = new ArrayList<>();
     }
 
     public String getParent_id() {
@@ -106,6 +109,10 @@ public class PostModel {
 
     public void setComments(List<PostModel> comments) {
         this.comments = comments;
+    }
+
+    public void addComment(PostModel comment) {
+        this.comments.add(comment);
     }
 
     @Override
