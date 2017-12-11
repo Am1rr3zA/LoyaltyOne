@@ -32,6 +32,22 @@ export class LoyaltyOneComponent implements OnInit {
   addPost(postText: HTMLInputElement, city: HTMLInputElement, latitude: HTMLInputElement,
     longitude: HTMLInputElement, temperature: HTMLInputElement) {
 
+    // const reg = new RegExp('^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$');
+
+    // if (latitude.value === '' || reg.exec(latitude.value) ) {
+    //   console.log('latitude is correct');
+    // } else {
+    //   alert('Latitude format is wrong');
+    //   return;
+    // }
+
+    // if (longitude.value === '' || reg.exec(longitude.value) ) {
+    //   console.log('latitude is correct');
+    // } else {
+    //   alert('Longitude format is wrong');
+    //   return;
+    // }
+
     this.getParentId();
 
     this.userSerivce.user$.subscribe(user => this.login_user = user);

@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
@@ -29,8 +30,8 @@ public class PostServiceTest {
 
     @Test
     public void getAllPostsOfUser() throws Exception {
-        List<PostModel> list = postRepository.getAllPostsOfUser(1);
-        assertEquals(5, list.size());
+        List<PostModel> list = postRepository.getAllPostsOfUser(4);
+        assertEquals(4, list.size());
     }
 
 }

@@ -31,7 +31,6 @@ public class PostController {
 
     @RequestMapping(value = Routes.API_GET_ALL_POSTS_BY_USER, method = RequestMethod.GET)
     public List<PostModel> returnAllPostsByUSer(@RequestParam(value="id", required=false) String id) {
-        List<PostModel> ss = postService.getAllPostsOfUser(Long.valueOf(id));
-        return ss;
+        return postService.getAllPostsOfUser(Long.valueOf(id));
     }
 }

@@ -31,7 +31,6 @@ public class PostControllerTest {
     @MockBean
     private PostService postService;
 
-
     @Test
     public void returnJsonBodyText() throws Exception {
 
