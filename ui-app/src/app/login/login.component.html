@@ -1,14 +1,13 @@
-<div class="screen-container login-screen">
-    <h2>Login</h2>
-
-    <div>
-        <input #username type="text" name="username" placeholder="Username">
+<div class="offset-lg-2 col-lg-8 col-md-12 offset-md-0">
+  <form>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" #username placeholder="Username">
     </div>
-    <div>
-        <input #password type="password" name="password" placeholder="Password">
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" #password placeholder="Password">
     </div>
-
-    <input type="submit" value="Login"
-           class="button button-primary" (click)="login(username.value, password.value)">
-
+    <button type="button" class="btn btn-primary" (click)="login(username.value, password.value)">Login</button>
+  </form>
 </div>

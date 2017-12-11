@@ -1,0 +1,13 @@
+<div class="col-lg-12 post">
+  <button class="btn btn-primary btn-sm float-sm-right" (click)="addcomment(post.id)">Reply</button>
+  <p>{{ post.text }}</p>
+  <p class="text-muted">
+    <small>{{ post.city.name }} @ {{ post.city.latitude }}:{{ post.city.longitude }} - {{ post.city.temperature }}</small><br />
+    <small>{{ post.date.dayOfMonth }}/{{post.date.month}}/{{ post.date.year }}-{{post.date.hour}}:{{post.date.minute}}</small>
+  </p>
+  
+  
+  <div class="row indent">
+    <post *ngFor="let post of post.comments" [post]="post"></post>
+  </div>
+</div>

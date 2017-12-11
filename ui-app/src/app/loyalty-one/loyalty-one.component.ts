@@ -10,7 +10,8 @@ import { CommentService } from '../services/comment.service';
 @Component({
   selector: 'loyalty-one',
   templateUrl: './loyalty-one.component.html',
-  styleUrls: ['./loyalty-one.component.css']
+  styleUrls: ['./loyalty-one.component.css'],
+  host: { 'style': 'width: 100%;'}
 })
 export class LoyaltyOneComponent implements OnInit {
 
@@ -47,8 +48,19 @@ export class LoyaltyOneComponent implements OnInit {
         latitude.value = '';
         longitude.value = '';
         temperature.value = '';
+        this.commentService.setId(null);
       });
     }
+  }
+
+  resetAll(postText: HTMLInputElement, city: HTMLInputElement, latitude: HTMLInputElement,
+    longitude: HTMLInputElement, temperature: HTMLInputElement) {
+      postText.value = '';
+      city.value = '';
+      latitude.value = '';
+      longitude.value = '';
+      temperature.value = '';
+      this.commentService.setId(null);
   }
 
 }

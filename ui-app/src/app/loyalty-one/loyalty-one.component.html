@@ -1,38 +1,41 @@
-<div class="course-container">
-    
-        <h2> Post Manager </h2>
-    
-        <div class="block">
-                <label>Post</label>
-                <input #input>
-        </div>
-
-        <div class="block">
-                <label>City</label>
-                <input #city   placeholder="city">
-        </div>
-
-        <div class="block">
-                <label>Latitude</label>
-                <input #latitude   placeholder="latitude">
-        </div>
-
-        <div class="block">
-                <label>Longitude</label>
-                <input #longitude   placeholder="longitude">
-        </div>
-
-        <div class="block">
-                <label>Temperature</label>
-                <input #temperature  placeholder="temperature">
-        </div>
-        <label>{{ commentService.get() }}</label>
-        
-    
-        <button class="button button-highlight"
-                (click)="addPost(input, city, latitude, longitude, temperature)" >Done</button>
-
-        <posts-list></posts-list>                
-    
-    
+<div class="offset-lg-2 col-lg-8 col-md-12 offset-md-0">
+  <h2> Post Manager </h2>
+  <hr class="col-lg-12" />
+  <form>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="post">post</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" #input placeholder="post">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="city">city</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" #city placeholder="city">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="city">latitude</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" #latitude placeholder="latitude">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="city">longitude</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" #longitude placeholder="longitude">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="city">temperature</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" #temperature placeholder="temperature">
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="addPost(input, city, latitude, longitude, temperature)">Post</button>
+    <button type="button" class="btn btn-primary" (click)="resetAll(input, city, latitude, longitude, temperature)">Reset</button>
+    <label>in reply to {{ commentService.get() }}</label>
+  </form>
 </div>
+<hr class="col-lg-12" />
+<posts-list></posts-list>

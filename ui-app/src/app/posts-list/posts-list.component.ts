@@ -10,7 +10,8 @@ import { CommentService } from '../services/comment.service';
 @Component({
   selector: 'posts-list',
   templateUrl: './posts-list.component.html',
-  styleUrls: ['./posts-list.component.css']
+  styleUrls: ['./posts-list.component.css'],
+  host: { 'style': 'width: 100%;'}
 })
 export class PostsListComponent implements Observer<PostModel[]>, OnInit {
 
@@ -39,13 +40,7 @@ export class PostsListComponent implements Observer<PostModel[]>, OnInit {
     console.log('completed');
   }
 
-  addcomment(id: string) {
-    this.commentService.setId(id);
-  }
-
   constructor(private postsService: PostsService, private userSerivce: UserService,
     private commentService: CommentService) { }
-
-
 
 }

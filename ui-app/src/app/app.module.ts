@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoyaltyOneComponent } from './loyalty-one/loyalty-one.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
+import { PostComponent } from './post/post.component';
 import { PostsService } from './services/posts.service';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { RouterModule } from '@angular/router';
@@ -21,6 +22,7 @@ import { CommentService } from './services/comment.service';
     LoginComponent,
     LoyaltyOneComponent,
     PostsListComponent,
+    PostComponent,
     TopMenuComponent
   ],
   imports: [
