@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
  */
 @Service
 public class PostService {
+
     @Autowired
     PostRepository postRepository;
 
@@ -33,20 +34,17 @@ public class PostService {
             index++;
         }
 
-        for (int i = 0; i < listOfPosts.size(); i++) {
-            if (listOfPosts.get(i).getParent_id() != null) {
-                int idx = idMap.get(listOfPosts.get(i).getParent_id());
-                listOfPosts.get(idx).addComment(listOfPosts.get(i));
+        for (PostModel listOfPost : listOfPosts) {
+            if (listOfPost.getParent_id() != null) {
+                int idx = idMap.get(listOfPost.getParent_id());
+                listOfPosts.get(idx).addComment(listOfPost);
             }
         }
 
-        List<PostModel> nestPostsList = listOfPosts.stream()
+        return listOfPosts.stream()
                 .filter(c -> c.getParent_id() == null)
                 .collect(Collectors.toList());
 
-
-
-        return nestPostsList;
     }
 
     public PostModel getPostById(String id) {

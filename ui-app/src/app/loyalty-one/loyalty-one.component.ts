@@ -31,7 +31,9 @@ export class LoyaltyOneComponent implements OnInit {
 
   addPost(postText: HTMLInputElement, city: HTMLInputElement, latitude: HTMLInputElement,
     longitude: HTMLInputElement, temperature: HTMLInputElement) {
+
     this.getParentId();
+
     this.userSerivce.user$.subscribe(user => this.login_user = user);
 
     if (postText.value !== null && postText.value !== ' '  && postText.value !== '') {
@@ -41,8 +43,9 @@ export class LoyaltyOneComponent implements OnInit {
       cityObj.longitude = +longitude.value;
       cityObj.temperature = +temperature.value;
 
-      this.postsService.postText(postText.value, this.login_user.id, this.parent_id, cityObj).subscribe((res: PostModel) => {
-        store.addPost(res);
+      this.postsService.postText(postText.value, this.login_user.id, this.parent_id, cityObj)
+      .subscribe((res: PostModel[]) => {
+        store.initializePostsList(res);
         postText.value = '';
         city.value = '';
         latitude.value = '';

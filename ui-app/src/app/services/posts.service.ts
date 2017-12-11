@@ -24,10 +24,10 @@ export class PostsService {
     return this.http.get<PostModel[]>(`${this.baseUrl}`, { params: params });
   }
 
-  postText(text: string, user_id: number, parent_id: string, city: City): Observable<PostModel> {
+  postText(text: string, user_id: number, parent_id: string, city: City): Observable<PostModel[]> {
     const body: PostModel = new PostModel(text, user_id, parent_id);
     body.city = city;
-    return this.http.post<PostModel>(`${this.baseUrl}`, body);
+    return this.http.post<PostModel[]>(`${this.baseUrl}`, body);
   }
 
 }

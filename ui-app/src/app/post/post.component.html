@@ -2,8 +2,8 @@
   <button class="btn btn-primary btn-sm float-sm-right" (click)="addcomment(post.id)">Reply</button>
   <p>{{ post.text }}</p>
   <p class="text-muted">
-    <small>{{ post.city.name }} @ {{ post.city.latitude }}:{{ post.city.longitude }} - {{ post.city.temperature }}</small><br />
-    <small>{{ post.date.dayOfMonth }}/{{post.date.month}}/{{ post.date.year }}-{{post.date.hour}}:{{post.date.minute}}</small>
+    <small>{{ post.city.name }} @ {{ post.city.latitude }}:{{ post.city.longitude }} - Temperature: {{ post.city.temperature }}</small><br />
+    <small>{{ post.date.dayOfMonth }}/{{post.date.monthValue}}/{{ post.date.year }}-{{post.date.hour}}:{{post.date.minute}}</small>
   </p>
   
   

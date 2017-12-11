@@ -24,9 +24,9 @@ public class PostController {
     PostService postService;
 
     @RequestMapping(value = Routes.API_GET_POST, method = RequestMethod.POST)
-    public PostModel returnJsonBodyText(@RequestBody PostModel post) {
+    public List<PostModel> returnJsonBodyText(@RequestBody PostModel post) {
         postService.addNewPost(post);
-        return  postService.getPostById(post.getId());
+        return  postService.getAllPostsOfUser(post.getUser_id());
     }
 
     @RequestMapping(value = Routes.API_GET_ALL_POSTS_BY_USER, method = RequestMethod.GET)
